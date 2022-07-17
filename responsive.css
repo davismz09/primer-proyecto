@@ -1,0 +1,39 @@
+/* Anade estos estilos cuando la pantalla sea mas grande que 768px de ancho */
+@media (min-width: 768px) {
+
+  /* Hero */
+  .hero__title {
+    font-size: 60px;
+  }
+
+  .button__menu-open:hover {
+    cursor: pointer;
+  }
+
+  .button__menu-close:hover {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #f2f2f2;
+    color: #000;
+    transition: .3s ease-in-out all;
+  }
+
+  .menu__item a:hover {
+    width: 70px;
+    height: min-content;
+    color: #111;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+    padding: 5px 15px;
+    transition: .3s ease-in-out all;
+  }
+
+  /* Anade estos estilos cuando la pantalla sea mas pequeno que 768px de ancho */
+  /* @media (max-width: 768px) {
+
+  } */
+}
