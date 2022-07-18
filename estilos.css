@@ -807,6 +807,74 @@ container__main {
   width: 12.8px;
 }
 
+/* SECTION BENEFITS */
+.benefits {
+  width: 100%;
+}
+
+.container__benefits {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.benefit__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.benefit__header,
+.benefit__company,
+.benefit__work {
+  margin-left: 30px;
+}
+
+.benefit__header h2 {
+  font-size: 36px;
+  line-height: 1.2em;
+}
+
+.secondTitle__benefits {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.text__benefits {
+  font-size: 16px;
+  margin-top: 20px;
+  font-family: 'Open Sans', sans-serif;
+  color: var(--color-text);
+}
+
+.fa-mobile-screen-button,
+.fa-user {
+  color: #f7783e;
+  font-size: 48px;
+}
+
+.benefit__contact a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.benefit__contact a p {
+  font-size: 36px;
+  color: #111;
+  font-weight: 700;
+
+}
+
+.fa-phone {
+  font-size: 24px;
+  color: #f7783e;
+  margin-top: 10px;
+
+}
+
 /* FOOTER */
 .footer {
   width: 100%;
