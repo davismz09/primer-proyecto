@@ -20,23 +20,21 @@ const descriptionAnimation = document.getElementById("descriptionAnimation");
 const comprobationAnimation = document.getElementById("comprobationAnimation");
 const misionVisionAnimation = document.getElementById("misionVisionAnimation")
 
-const mostrarElemento = (entradas, _observador) => {
-  // console.log(entradas)
-  // console.log(observador)
+const mostrarElemento = (entradas) => {
   entradas.forEach((entrada)=>{
     if(entrada.isIntersecting){
       entrada.target.classList.add('visible');
     }else{
       entrada.target.classList.remove('visible');
     }
-  });
+  })
 }
+
 const observador = new IntersectionObserver(mostrarElemento, {
   root: null,
   rootMargin: '0px 0px 0px 0px',
   threshold: .5
 });
-
 
 observador.observe(groupAnimation);
 observador.observe(aboutUsAnimation);
@@ -62,40 +60,51 @@ const btnS8Text2 = document.getElementById("btn__S8text2");
 const btnS8Text3 = document.getElementById("btn__S8text3");
 const btnS8Text4 = document.getElementById("btn__S8text4");
 
-  contentS8OC.addEventListener("click",() => {
-    if (contentS8Hidden.className =="") {
-      contentS8Hidden.className = "textS8--mostrar";
-      btnS8Text.textContent = "X";
-    }else{
-      contentS8Hidden.className = "";
-      btnS8Text.textContent = "+";
-    }
-  });
+// Cuando usar funciones
+// 1. Cuando veo que se repite el códdigo
+// 2. Cual es la parte que no se repite
 
-  contentS8OC2.addEventListener("click",() => {
-    if (contentS8Hidden2.className =="") {
-      contentS8Hidden2.className = "textS8--mostrar";
-      btnS8Text2.textContent = "X";
+const groupOfButtons = [
+  [
+    contentS8Hidden,
+    btnS8Text
+  ],
+  [
+    contentS8Hidden2,
+    btnS8Text2
+  ],
+  [
+    contentS8Hidden3,
+    btnS8Text3
+  ],
+  [
+    contentS8Hidden4,
+    btnS8Text4
+  ]
+]
+
+function closeAllContent() {
+  groupOfButtons.forEach(([content, buttonText]) => {
+    console.log(content, buttonText)
+    content.className = ""
+    buttonText.textContent = "+"
+  })
+}
+
+function addEventToContent(button, contentToHidden, buttonContent) {
+  button.addEventListener("click", () => {
+    closeAllContent()
+    if (contentToHidden.className == "") {
+      contentToHidden.className = "textS8--mostrar";
+      buttonContent.textContent = "X";
     }else{
-      contentS8Hidden2.className = "";
-      btnS8Text2.textContent = "+";
+      contentToHidden.className = "";
+      buttonContent.textContent = "+";
     }
-  });
-  contentS8OC3.addEventListener("click",() => {
-    if (contentS8Hidden3.className =="") {
-      contentS8Hidden3.className = "textS8--mostrar";
-      btnS8Text3.textContent = "X";
-    }else{
-      contentS8Hidden3.className = "";
-      btnS8Text3.textContent = "+";
-    }
-  });
-  contentS8OC4.addEventListener("click",() => {
-      if (contentS8Hidden4.className =="") {
-        contentS8Hidden4.className = "textS8--mostrar";
-        btnS8Text4.textContent = "X";
-      }else{
-        contentS8Hidden4.className = "";
-        btnS8Text4.textContent = "+";
-    }
-  });
+  })
+}
+
+addEventToContent(contentS8OC, contentS8Hidden, btnS8Text)
+addEventToContent(contentS8OC2, contentS8Hidden2, btnS8Text2)
+addEventToContent(contentS8OC3, contentS8Hidden3, btnS8Text3)
+addEventToContent(contentS8OC4, contentS8Hidden4, btnS8Text4)
