@@ -881,7 +881,7 @@ container__main {
 }
 
 .container__footer {
-  width: 95%;
+  width: 100%;
   background-color: #333333;
   display: grid;
   margin: auto;
