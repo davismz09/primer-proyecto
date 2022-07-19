@@ -1,4 +1,4 @@
-const buttonMenuOpen = document.getElementById("buttonMenuOpen")
+  const buttonMenuOpen = document.getElementById("buttonMenuOpen")
 const buttonMenuClose = document.getElementById("buttonMenuClose")
 const menu = document.getElementById("menu")
 const capa = document.getElementById("capaOpacity")
