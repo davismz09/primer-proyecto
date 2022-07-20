@@ -141,7 +141,7 @@ container__main {
 }
 
 .hero {
-  background-image: url(img/hero-bg.jpeg);
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url(img/hero-bg.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 600px;
