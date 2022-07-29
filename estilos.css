@@ -991,6 +991,14 @@ container__main {
   color: #fff;
   font-size: 16px;
   margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.submit__contact:hover {
+  background-color: #f2f2f2;
+  color: #f7783e;
+  font-weight: bold;
+  transition: .7s ease;
 }
 
 /* FOOTER */
