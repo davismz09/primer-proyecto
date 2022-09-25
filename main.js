@@ -1,39 +1,39 @@
-  const buttonMenuOpen = document.getElementById("buttonMenuOpen")
-const buttonMenuClose = document.getElementById("buttonMenuClose")
-const menu = document.getElementById("menu")
-const capa = document.getElementById("capaOpacity")
+const buttonMenuOpen = document.getElementById("buttonMenuOpen");
+const buttonMenuClose = document.getElementById("buttonMenuClose");
+const menu = document.getElementById("menu");
+const capa = document.getElementById("capaOpacity");
 
 buttonMenuOpen.addEventListener("click", () => {
-  menu.classList.add("active")
-  capa.classList.add("active")
-})
+  menu.classList.add("active");
+  capa.classList.add("active");
+});
 
 buttonMenuClose.addEventListener("click", () => {
-  menu.classList.remove("active")
-  capa.classList.remove("active")
-})
+  menu.classList.remove("active");
+  capa.classList.remove("active");
+});
 
 // HACER APARECER CUANDO UNA SECTION ESTE EN EL VIEWPORT
 const groupAnimation = document.getElementById("group__animation");
 const aboutUsAnimation = document.getElementById("aboutUsAnimation");
 const descriptionAnimation = document.getElementById("descriptionAnimation");
 const comprobationAnimation = document.getElementById("comprobationAnimation");
-const misionVisionAnimation = document.getElementById("misionVisionAnimation")
+const misionVisionAnimation = document.getElementById("misionVisionAnimation");
 
 const mostrarElemento = (entradas) => {
-  entradas.forEach((entrada)=>{
-    if(entrada.isIntersecting){
-      entrada.target.classList.add('visible');
-    }else{
-      entrada.target.classList.remove('visible');
+  entradas.forEach((entrada) => {
+    if (entrada.isIntersecting) {
+      entrada.target.classList.add("visible");
+    } else {
+      entrada.target.classList.remove("visible");
     }
-  })
-}
+  });
+};
 
 const observador = new IntersectionObserver(mostrarElemento, {
   root: null,
-  rootMargin: '0px 0px 0px 0px',
-  threshold: .5
+  rootMargin: "0px 0px 0px 0px",
+  threshold: 0.5,
 });
 
 observador.observe(groupAnimation);
@@ -65,46 +65,51 @@ const btnS8Text4 = document.getElementById("btn__S8text4");
 // 2. Cual es la parte que no se repite
 
 const groupOfButtons = [
-  [
-    contentS8Hidden,
-    btnS8Text
-  ],
-  [
-    contentS8Hidden2,
-    btnS8Text2
-  ],
-  [
-    contentS8Hidden3,
-    btnS8Text3
-  ],
-  [
-    contentS8Hidden4,
-    btnS8Text4
-  ]
-]
+  {
+    content: contentS8Hidden,
+    buttonText: btnS8Text,
+  },
+  {
+    content: contentS8Hidden2,
+    buttonText: btnS8Text2,
+  },
+  {
+    content: contentS8Hidden3,
+    buttonText: btnS8Text3,
+  },
+  {
+    content: contentS8Hidden4,
+    buttonText: btnS8Text4,
+  },
+];
 
-function closeAllContent() {
-  groupOfButtons.forEach(([content, buttonText]) => {
-    console.log(content, buttonText)
-    content.className = ""
-    buttonText.textContent = "+"
-  })
+function closeContents() {
+  groupOfButtons.map(({ content, buttonText }) => {
+    if (!isContentEmpty(content)) {
+      content.className = "";
+      buttonText.textContent = "+";
+    }
+  });
 }
+
+const isContentEmpty = (content) => {
+  return content.className === "";
+};
 
 function addEventToContent(button, contentToHidden, buttonContent) {
   button.addEventListener("click", () => {
-    closeAllContent()
-    if (contentToHidden.className == "") {
+    if (isContentEmpty(contentToHidden)) {
+      closeContents();
       contentToHidden.className = "textS8--mostrar";
       buttonContent.textContent = "X";
-    }else{
-      contentToHidden.className = "";
-      buttonContent.textContent = "+";
+      return;
     }
-  })
+    contentToHidden.className = "";
+    buttonContent.textContent = "+";
+  });
 }
 
-addEventToContent(contentS8OC, contentS8Hidden, btnS8Text)
-addEventToContent(contentS8OC2, contentS8Hidden2, btnS8Text2)
-addEventToContent(contentS8OC3, contentS8Hidden3, btnS8Text3)
-addEventToContent(contentS8OC4, contentS8Hidden4, btnS8Text4)
+addEventToContent(contentS8OC, contentS8Hidden, btnS8Text);
+addEventToContent(contentS8OC2, contentS8Hidden2, btnS8Text2);
+addEventToContent(contentS8OC3, contentS8Hidden3, btnS8Text3);
+addEventToContent(contentS8OC4, contentS8Hidden4, btnS8Text4);
