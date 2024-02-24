@@ -223,7 +223,7 @@ container__main {
 .relationship--animation.visible {
   opacity: 1;
   transform: translateY(0);
-  transition: 0.8s ease-in-out all;
+  transition: 0.7s ease-in-out all;
 }
 
 .photo__group {

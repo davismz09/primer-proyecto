@@ -20,21 +20,23 @@ const descriptionAnimation = document.getElementById("descriptionAnimation");
 const comprobationAnimation = document.getElementById("comprobationAnimation");
 const misionVisionAnimation = document.getElementById("misionVisionAnimation");
 
-const mostrarElemento = (entradas) => {
+const mostrarElemento = (entradas, observer) => {
   entradas.forEach((entrada) => {
     if (entrada.isIntersecting) {
       entrada.target.classList.add("visible");
-    } else {
-      entrada.target.classList.remove("visible");
+      observer.unobserve(entrada.target); // Deja de observar el elemento una vez que se hace visible
     }
   });
 };
 
-const observador = new IntersectionObserver(mostrarElemento, {
-  root: null,
-  rootMargin: "0px 0px 0px 0px",
-  threshold: 0.5,
-});
+const observador = new IntersectionObserver(
+  (entradas, observer) => mostrarElemento(entradas, observer),
+  {
+    root: null,
+    rootMargin: "0px 0px 0px 0px",
+    threshold: 0.5,
+  },
+);
 
 observador.observe(groupAnimation);
 observador.observe(aboutUsAnimation);
@@ -84,7 +86,7 @@ const groupOfButtons = [
 ];
 
 function closeContents() {
-  groupOfButtons.map(({ content, buttonText }) => {
+  groupOfButtons.map(({content, buttonText}) => {
     if (!isContentEmpty(content)) {
       content.className = "";
       buttonText.textContent = "+";
